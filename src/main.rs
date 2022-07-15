@@ -152,8 +152,8 @@ async fn main() {
             .route("/", actix_web::web::get().to(playground_ui))
             .wrap_api_with_spec(spec);
 
-        modules::coin::register_service(&mut app);
-        modules::nft::register_service(&mut app);
+        app = app.configure(modules::coin::register_service);
+        app = app.configure(modules::nft::register_service);
 
         app.with_json_spec_at("/api/spec/v2.json")
             .with_json_spec_v3_at("/api/spec/v3.json")

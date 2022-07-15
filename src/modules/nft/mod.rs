@@ -5,7 +5,7 @@ mod schemas;
 mod data_provider;
 mod resources;
 
-pub(crate) fn register_service<T>(app: &mut App<T>) where T: ServiceFactory<ServiceRequest> {
+pub(crate) fn register_service(app: &mut web::ServiceConfig) {
     app.service(
             web::resource("/accounts/{account_id}/NFT")
                 .route(web::get().to(resources::get_nft_collection_overview)),

@@ -5,7 +5,7 @@ mod schemas;
 mod resources;
 mod data_provider;
 
-pub(crate) fn register_service<T, U, V, X>(app: &mut App<dyn ServiceFactory<ServiceRequest, Response=ServiceResponse<T>, Error=U, Config=(), Service=V, InitError=(), Future=X>>) {
+pub(crate) fn register_service(app: &mut web::ServiceConfig) {
     app.service(
         web::resource("/accounts/{account_id}/coins/NEAR")
             .route(web::get().to(resources::get_near_balance)),

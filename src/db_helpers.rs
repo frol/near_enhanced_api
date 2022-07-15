@@ -8,7 +8,7 @@ const INTERVAL: std::time::Duration = std::time::Duration::from_millis(100);
 const MAX_DELAY_TIME: std::time::Duration = std::time::Duration::from_secs(120);
 
 // temp solution to pass 2 different connection pools
-pub(crate) struct DBWrapper {
+pub struct DBWrapper {
     pub pool: sqlx::Pool<sqlx::Postgres>,
 }
 
